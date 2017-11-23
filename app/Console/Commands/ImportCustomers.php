@@ -76,17 +76,20 @@ class ImportCustomers extends Command
             /* @var Company $dbCompany */
             $dbCompany = Company::findOrNew($company);
             $dbCompany->company_name = $company;
+            // Another way to do it below, using fill...
             //$dbCompany->fill(['company_name' => $company]);
             $dbCompany->save();
 
            /*
+            * ANOTHER WAY TO DO IT...
             $customers = Customer::where('customer_company', '=', $dbCompany->company_name)->get();
             foreach ($customers as $customer) {
                 $customer->company_id = $dbCompany->id;
                 $customer->save();
             }
 */
-            DB::table('customers')
+           //Update statement
+           DB::table('customers')
                 ->where('customer_company', '=', $dbCompany->company_name)
                 ->update(['company_id' => $dbCompany->id]);
         }

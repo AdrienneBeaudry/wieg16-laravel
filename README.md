@@ -49,7 +49,4 @@ Skapa en separat tabell för företagen (förslagsvis companies) genom att skriv
 Skriv sedan kod som går igenom datan och plockar ut företagsnamnen.
 Företagsnamnen lagras sedan i den nya separata tabellen och kunder med detta företagsnamn skall få samma company_id.
 ## Övning 7
-Utöka din customers.php så att man kan hämta kunder baserat på company_id.
-Om company_id anges så skall alla kunder med detta id visas.
-Exempel på url: http://wieg16-api.dev/customers?company_id=1
-Denna url skall då visa mig alla kunder med company_id 1 i json-format.
+Lägg till en route där man kan hämta kunder baserat på company_id. Alla kunder med detta company_id skall visas. Exempel på url: http://wieg16-api.dev/customers/by-company/1 Denna url skall då visa mig alla kunder med company_id 1 i json-format.
