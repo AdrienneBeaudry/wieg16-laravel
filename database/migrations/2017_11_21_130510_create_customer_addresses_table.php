@@ -14,8 +14,20 @@ class CreateCustomerAddressesTable extends Migration
     public function up()
     {
         Schema::create('customer_addresses', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->integer('id', false, true);
+            $table->integer('customer_id', false, true);
+            $table->integer('customer_address_id')->nullable();
+            $table->string('email')->nullable();
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
+            $table->string('postcode')->nullable();
+            $table->string('street')->nullable();
+            $table->string('city')->nullable();
+            $table->string('telephone')->nullable();
+            $table->string('country_id')->nullable();
+            $table->tinyInteger('address_type')->nullable();
+            $table->string('company')->nullable();
+            $table->string('country')->nullable();
         });
     }
 
