@@ -14,7 +14,16 @@ class CustomersController extends Controller
 
     public function showCustomer($id)
     {
-        $customer = Customer::findOrFail($id);
-        return response()->json($customer);
+        $customer = Customer::find($id);
+        if($customer==null) {
+            $code = 404;
+            $response = ['message' => 'Customer not found'];
+            header("content-type: application/json", true, $code);
+            echo json_encode($response);
+        }
+        else {
+            $result = response()->json($customer);
+            return $result;
+        }
     }
 }
